@@ -9,18 +9,15 @@
 
 import { GraphQLList as List } from 'graphql';
 import fetch from '../../core/fetch';
-import NewsItemType from '../types/NewsItemType';
+import BannerItemType from '../types/BannerItemType';
 
-// React.js News Feed (RSS)
-// const url = 'http://ajax.googleapis.com/ajax/services/feed/load' +
-            // '?v=1.0&num=10&q=https://reactjsnews.com/feed.xml';
 const url = 'http://api.dev.chunbo.com/Home/newindex';
 let items = [];
 let lastFetchTask;
 let lastFetchTime = new Date(1970, 0, 1);
 
-const news = {
-  type: new List(NewsItemType),
+const banner = {
+  type: new List(BannerItemType),
   resolve() {
     if (lastFetchTask) {
       return lastFetchTask;
@@ -52,4 +49,4 @@ const news = {
   },
 };
 
-export default news;
+export default banner;

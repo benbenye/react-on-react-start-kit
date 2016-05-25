@@ -10,7 +10,7 @@
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.scss';
-import Banner from '../../components/banner/Banner'
+import Banner from '../banner'
 
 const title = 'React Starter Kit';
 const none = {
@@ -22,22 +22,20 @@ const ml500 = {
 function Home({ news }, context) {
   context.setTitle(title);
   return (
-    <div className={s.container}>
+    <div className={s.root,s['main-container']}>
       <Banner />
-      <div className={s.root,s['main-container']}>
-        <div className={s.container}>
-          <h1 className={s.title}>React.js News</h1>
-          <ul className={s.news}>
-            {news.map((item, index) => (
-              <li key={index} classNamev={s.newsItem}>
-                <span
-                  className={s.newsDesc}
-                  dangerouslySetInnerHTML={{ __html: item.name }}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className={s.container}>
+        <h1 className={s.title}>React.js News</h1>
+        <ul className={s.news}>
+          {news.map((item, index) => (
+            <li key={index} classNamev={s.newsItem}>
+              <span
+                className={s.newsDesc}
+                dangerouslySetInnerHTML={{ __html: item.name }}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
