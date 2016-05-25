@@ -10,6 +10,7 @@
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.scss';
+import Banner from '../../components/banner/Banner'
 
 const title = 'React Starter Kit';
 const none = {
@@ -21,70 +22,22 @@ const ml500 = {
 function Home({ news }, context) {
   context.setTitle(title);
   return (
-    <div className={s.root,s.container}>
-      <div className={s.container}>
-        <h1 className={s.title}>React.js News</h1>
-        <ul className={s.news}>
-          {news.map((item, index) => (
-            <li key={index} className={s.newsItem}>
-              <span
-                className={s.newsDesc}
-                dangerouslySetInnerHTML={{ __html: item.name }}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="distribution-box">
-          <div className="distribution-selector">
-              <div className="content">
-                  <ul className="tab-tit">
-                      <li className="city on tabProvince" id="tabProvince">
-                          <span>请选择</span>
-                          <i className="tri" />
-                      </li>
-                      <li className="district tabCity" id="tabCity" style={none}>
-                        <span>请选择</span>
-                          <i className="tri" />
-                      </li>
-                      <li className="district tabDistrict" id="tabDistrict" style={none}>
-                          <span>请选择</span>
-                          <i className="tri" />
-                      </li>
-                  </ul>
-                  <ul className="tab-con city provinceList" id="provinceList" />
-                  <ul className="tab-con district cityList" style={none} id="cityList" />
-                  <ul className="tab-con district districtList" style={none} id="districtList" />
-              </div>
-          </div>
-      </div>
-      <div className="distribution-box" style={ml500}>
-          <div className="distribution-selector">
-              <div className="dis-text" id="address-text">
-                <span>请选择</span>
-                <i className="tri" />
-              </div>
-              <div className="content" id="product-address">
-                  <ul className="tab-tit">
-                      <li className="city on tabProvince">
-                        <span>请选择</span>
-                        <i className="tri" />
-                      </li>
-                      <li className="district tabCity" style={none}>
-                        <span>请选择</span>
-                        <i className="tri" />
-                      </li>
-                      <li className="district tabDistrict" style={none}>
-                        <span>请选择</span>
-                        <i className="tri" />
-                      </li>
-                  </ul>
-                  <ul className="tab-con city provinceList" />
-                  <ul className="tab-con district cityList" style={none} />
-                  <ul className="tab-con district districtList" style={none} />
-              </div>
-          </div>  
+    <div className={s.container}>
+      <Banner />
+      <div className={s.root,s['main-container']}>
+        <div className={s.container}>
+          <h1 className={s.title}>React.js News</h1>
+          <ul className={s.news}>
+            {news.map((item, index) => (
+              <li key={index} classNamev={s.newsItem}>
+                <span
+                  className={s.newsDesc}
+                  dangerouslySetInnerHTML={{ __html: item.name }}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -14,8 +14,22 @@ export default {
 
   path: '/contact',
 
-  action() {
-    return <Contact />;
-  },
-
+  async action() {
+    const resp = await fetch('/graphql', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        mdoe:'cors'
+      },
+      body: JSON.stringify({
+        query: '{news{name}}',
+      }),
+      credentials: 'include'
+    });
+    const { data } = await resp.json();
+    console.log(data)
+    if (!data || !data.news) throw new Error('Failed to load the news feed.');
+    return <Contact news={data.news} />;
+	},
 };

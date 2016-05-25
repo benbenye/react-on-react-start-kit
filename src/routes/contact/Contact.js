@@ -15,12 +15,22 @@ const title = 'Contact Us for test CB addressSwitch';
 const none = {
 	display:none
 }
-function Contact(props, context) {
+function Contact({ news }, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
+        <ul className={s.news}>
+          {news.map((item, index) => (
+            <li key={index} className={s.newsItem}>
+              <span
+                className={s.newsDesc}
+                dangerouslySetInnerHTML={{ __html: item.name }}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

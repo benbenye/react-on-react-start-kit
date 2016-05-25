@@ -14,6 +14,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import run from './run';
 import runServer from './runServer';
 import webpackConfig from './webpack.config';
+import {port} from '../src/config';
 import clean from './clean';
 import copy from './copy';
 
@@ -90,6 +91,7 @@ async function start() {
           bs.init({
             ...(DEBUG ? {} : { notify: false, ui: false }),
 
+            port:port,
             proxy: {
               target: host,
               middleware: [wpMiddleware, ...hotMiddlewares],
